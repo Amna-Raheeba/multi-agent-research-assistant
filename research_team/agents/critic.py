@@ -7,6 +7,10 @@ Two checks, both mechanical on purpose:
    claim text is injected without a matching finding.
 
 An LLM judge would be more flexible and far less predictable in tests.
+
+The critic also carries the evidence graph's contradiction flags into
+its critique. Those never block approval — a disagreement between
+sources is something to report, not an error to revise away.
 """
 from __future__ import annotations
 
@@ -20,7 +24,8 @@ CITATION_RE = re.compile(r"\[([A-Z]+\d+(?:,\s*[A-Z]+\d+)*)\]")
 class CriticAgent:
     name = "critic"
 
-    def run(self, draft: str, findings: list[Finding]) -> Critique:
+    def run(self, draft: str, findings: list[Finding],
+            contradictions: list[dict] | None = None) -> Critique:
         known_claims = {f.claim.strip().lower() for f in findings}
         unsupported: list[str] = []
         missing = 0
@@ -48,5 +53,17 @@ class CriticAgent:
             comments.append(f"{len(unsupported)} unsupported or uncited claim(s) in Key Findings.")
         if missing:
             comments.append(f"{missing} claim(s) missing a citation marker.")
+        # Contradictions are reported, not punished: two sources
+        # disagreeing is evidence to surface (the writer gives it its
+        # own section), not an unsupported claim. They are attached to
+        # the critique so a reader of the critique alone still sees them.
+        contradictions = contradictions or []
+        for c in contradictions:
+            comments.append(
+                f"Conflicting evidence: [{c['source_a']}] \"{c['claim_a']}\" vs "
+                f"[{c['source_b']}] \"{c['claim_b']}\" (shared terms: "
+                f"{', '.join(c['shared_terms'])})."
+            )
         return Critique(approved=not unsupported, unsupported_claims=unsupported,
-                        missing_citations=missing, comments=comments)
+                        missing_citations=missing, comments=comments,
+                        contradictions=contradictions)
