@@ -1,0 +1,296 @@
+{
+  "note": "Original summaries written for this project. No text is copied from the underlying papers.",
+  "sources": [
+    {
+      "authors": [
+        "Lena Hartmann",
+        "Priya Nair"
+      ],
+      "key_points": [
+        "Saliency maps alone did not measurably increase clinician trust",
+        "Pairing explanations with confidence and uncertainty improved appropriate reliance",
+        "Clinicians valued guidance on when to override the model"
+      ],
+      "source_id": "S1",
+      "source_type": "journal",
+      "summary": "A study with radiologists found that saliency maps alone did not increase trust, but explanations paired with model confidence and a short uncertainty note did. Clinicians wanted to know when to ignore the model, not only why it fired.",
+      "title": "Clinician trust in post-hoc explanations for medical imaging models",
+      "url": "https://arxiv.org/abs/2401.00001",
+      "venue": "Journal of Medical AI Systems",
+      "year": 2024,
+      "keywords": [
+        "healthcare",
+        "explainable ai",
+        "clinical",
+        "medical imaging",
+        "trust"
+      ]
+    },
+    {
+      "authors": [
+        "Marcus Webb",
+        "Aisha Khan",
+        "Tom Becker"
+      ],
+      "key_points": [
+        "Popular attribution methods often disagree on the same prediction",
+        "Fidelity testing should accompany accuracy reporting before deployment",
+        "Disagreement between methods is itself a useful warning signal"
+      ],
+      "source_id": "S2",
+      "source_type": "conference",
+      "summary": "The authors compared feature-attribution methods on hospital readmission models and showed that popular methods can disagree sharply on the same prediction. They argue fidelity tests should be reported alongside accuracy before deployment.",
+      "title": "Evaluating explanation fidelity in healthcare risk prediction",
+      "url": "https://arxiv.org/abs/2305.00002",
+      "venue": "ML for Healthcare Conference",
+      "year": 2023,
+      "keywords": [
+        "healthcare",
+        "explainable ai",
+        "clinical",
+        "risk prediction",
+        "attribution"
+      ]
+    },
+    {
+      "authors": [
+        "Sofia Rossi"
+      ],
+      "key_points": [
+        "Counterfactual explanations were rated more actionable than feature rankings",
+        "Modifiable factors matter more to clinicians than static risk factors",
+        "Prospective clinical validation is still missing"
+      ],
+      "source_id": "S3",
+      "source_type": "preprint",
+      "summary": "This preprint explores counterfactual statements of the form: the risk score would drop if a modifiable factor changed. Clinicians in interviews found these more actionable than feature rankings, but the work has not yet been validated in a prospective trial.",
+      "title": "Counterfactual explanations for treatment decision support",
+      "url": "https://arxiv.org/abs/2403.00003",
+      "venue": "arXiv preprint",
+      "year": 2024,
+      "keywords": [
+        "healthcare",
+        "explainable ai",
+        "clinical",
+        "counterfactual",
+        "decision support"
+      ]
+    },
+    {
+      "authors": [
+        "European Health AI Working Group"
+      ],
+      "key_points": [
+        "High-risk clinical AI requires documented explanation methods",
+        "Logging of outputs and human oversight are expected controls",
+        "Explanation quality is becoming a regulatory, not only technical, concern"
+      ],
+      "source_id": "S4",
+      "source_type": "report",
+      "summary": "A policy summary describing how recent medical-device guidance expects documented explanation methods, logging of model outputs, and human oversight for high-risk clinical AI systems.",
+      "title": "Regulatory expectations for explainable AI in clinical software",
+      "url": "",
+      "venue": "Policy report",
+      "year": 2025,
+      "keywords": [
+        "healthcare",
+        "explainable ai",
+        "clinical",
+        "regulation",
+        "medical device"
+      ]
+    },
+    {
+      "authors": [
+        "Anonymous Clinician Blog"
+      ],
+      "key_points": [
+        "Long generic explanations contributed to alert fatigue",
+        "Explanations shown for every alert were eventually ignored",
+        "Brevity and selectivity matter for explanation design"
+      ],
+      "source_id": "S5",
+      "source_type": "blog",
+      "summary": "A first-person blog post describing alert fatigue in a sepsis system. Explanations were long, generic, and shown for every alert, so staff began ignoring both the explanation and the alert.",
+      "title": "Why our hospital turned off its sepsis alert explanations",
+      "url": "",
+      "venue": "Clinical Informatics Blog",
+      "year": 2022,
+      "keywords": [
+        "healthcare",
+        "clinical",
+        "alert fatigue",
+        "explanations"
+      ]
+    },
+    {
+      "authors": [
+        "Daniel Cho",
+        "Mei Lin"
+      ],
+      "key_points": [
+        "Supervisor orchestration costs more tokens than a fixed chain",
+        "Supervisors recover better when a sub-task fails",
+        "Routing decisions should be logged for debugging"
+      ],
+      "source_id": "S6",
+      "source_type": "conference",
+      "summary": "A practical comparison of supervisor, chain, and parallel orchestration for LLM agents. Supervisor patterns cost more tokens but recovered better from a failing sub-task because the supervisor could re-route work instead of failing the whole run.",
+      "title": "Multi-agent LLM systems: patterns for supervisor orchestration",
+      "url": "https://arxiv.org/abs/2406.00006",
+      "venue": "Workshop on LLM Agents",
+      "year": 2024,
+      "keywords": [
+        "llm agents",
+        "multi-agent",
+        "supervisor",
+        "orchestration"
+      ]
+    },
+    {
+      "authors": [
+        "Hannah Park",
+        "Omar Farouk",
+        "Julia Stein",
+        "Ben Cole"
+      ],
+      "key_points": [
+        "Unsupported claims are a recurring failure in agent-written reports",
+        "Agents sometimes cite sources that do not support the claim",
+        "A separate critic and a hard revision limit reduce looping"
+      ],
+      "source_id": "S7",
+      "source_type": "journal",
+      "summary": "An evaluation of research agents on literature-review tasks found three recurring failures: unsupported claims in final reports, citation of sources that did not contain the claim, and loops where agents repeatedly revised without improving. The authors recommend a separate critic step and a hard revision limit.",
+      "title": "Failure modes of autonomous research agents",
+      "url": "https://arxiv.org/abs/2501.00007",
+      "venue": "Journal of AI Safety and Evaluation",
+      "year": 2025,
+      "keywords": [
+        "llm agents",
+        "research agents",
+        "failure modes",
+        "critic",
+        "evaluation"
+      ]
+    },
+    {
+      "authors": [
+        "Ravi Menon"
+      ],
+      "key_points": [
+        "External tools can ground agent outputs",
+        "Tool results should be passed through verbatim",
+        "Claims should be traceable to a tool result"
+      ],
+      "source_id": "S8",
+      "source_type": "preprint",
+      "summary": "This preprint argues that giving agents external tools such as search and calculators grounds their outputs, but only when tool results are passed through verbatim and the agent is penalised for claims that cannot be traced to a tool result.",
+      "title": "Tool use and grounding in LLM agents",
+      "url": "https://arxiv.org/abs/2308.00008",
+      "venue": "arXiv preprint",
+      "year": 2023,
+      "keywords": [
+        "llm agents",
+        "tool use",
+        "grounding"
+      ]
+    },
+    {
+      "authors": [
+        "Grace Liu",
+        "Peter Novak"
+      ],
+      "key_points": [
+        "Revision loops dominate the cost of agent pipelines",
+        "Per-agent cost tracking makes waste visible",
+        "Explicit per-run budgets prevent runaway loops"
+      ],
+      "source_id": "S9",
+      "source_type": "conference",
+      "summary": "Measurements from production-style agent pipelines showing that revision loops dominate cost. A single extra revision round cost more than the initial research step, which motivates explicit per-run budgets and per-agent cost tracking.",
+      "title": "Cost accounting for multi-agent LLM pipelines",
+      "url": "https://arxiv.org/abs/2409.00009",
+      "venue": "Systems for ML Conference",
+      "year": 2024,
+      "keywords": [
+        "multi-agent",
+        "llm agents",
+        "cost",
+        "budget",
+        "pipelines"
+      ]
+    },
+    {
+      "authors": [
+        "Kenji Sato",
+        "Laura Gomez"
+      ],
+      "key_points": [
+        "Attribution explanations helped distinguish sensor drift from degradation",
+        "Explanations reduced unnecessary inspections in the case study",
+        "Domain experts used explanations to challenge model outputs"
+      ],
+      "source_id": "S10",
+      "source_type": "conference",
+      "summary": "Work on predictive maintenance where feature-attribution explanations helped maintenance engineers distinguish sensor drift from genuine degradation, reducing unnecessary inspections in the reported case study.",
+      "title": "Explainable failure prediction for rotating machinery",
+      "url": "https://arxiv.org/abs/2302.00010",
+      "venue": "Prognostics and Health Management Society",
+      "year": 2023,
+      "keywords": [
+        "predictive maintenance",
+        "explainable",
+        "failure prediction",
+        "machinery"
+      ]
+    },
+    {
+      "authors": [
+        "Amir Hassan",
+        "Nina Petrova"
+      ],
+      "key_points": [
+        "Counterfactuals can suggest the smallest plausible repair intervention",
+        "The method was evaluated on public turbofan degradation data",
+        "Plausibility constraints matter more than minimal mathematical distance"
+      ],
+      "source_id": "S11",
+      "source_type": "journal",
+      "summary": "A journal paper proposing counterfactual repair recommendations: the smallest plausible intervention predicted to return a machine to a healthy state. The authors evaluate the approach on public turbofan degradation data.",
+      "title": "Counterfactual repair planning in predictive maintenance",
+      "url": "https://arxiv.org/abs/2404.00011",
+      "venue": "Reliability Engineering Journal",
+      "year": 2024,
+      "keywords": [
+        "predictive maintenance",
+        "counterfactual",
+        "repair",
+        "explainable"
+      ]
+    },
+    {
+      "authors": [
+        "Wei Zhang"
+      ],
+      "key_points": [
+        "Prediction intervals are more useful than point estimates for maintenance decisions",
+        "Costs of early and late intervention are asymmetric",
+        "Uncertainty should be shown, not hidden, in PHM dashboards"
+      ],
+      "source_id": "S12",
+      "source_type": "preprint",
+      "summary": "A preprint on remaining-useful-life models that output prediction intervals rather than point estimates, arguing maintenance decisions need uncertainty because the cost of acting too early and too late is asymmetric.",
+      "title": "Uncertainty-aware remaining useful life estimation",
+      "url": "https://arxiv.org/abs/2207.00012",
+      "venue": "arXiv preprint",
+      "year": 2022,
+      "keywords": [
+        "predictive maintenance",
+        "uncertainty",
+        "remaining useful life"
+      ]
+    }
+  ],
+  "version": 1
+}
