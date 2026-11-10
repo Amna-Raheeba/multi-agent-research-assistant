@@ -14,20 +14,21 @@ class WriterAgent:
     name = "writer"
 
     def run(self, topic: str, findings: list[Finding], sources: list[Source],
-            evidence_table: list[dict]) -> str:
-        return self._render(topic, findings, sources, evidence_table)
+            evidence_table: list[dict], contradictions: list[dict] | None = None) -> str:
+        return self._render(topic, findings, sources, evidence_table, contradictions)
 
     def revise(self, topic: str, findings: list[Finding], sources: list[Source],
-               evidence_table: list[dict], unsupported: list[str]) -> str:
+               evidence_table: list[dict], unsupported: list[str],
+               contradictions: list[dict] | None = None) -> str:
         """Revision = re-render from evidence only.
 
         Unsupported sentences were never generated from findings, so
         re-rendering from findings drops them by construction rather
         than trying to patch the old draft in place.
         """
-        return self._render(topic, findings, sources, evidence_table)
+        return self._render(topic, findings, sources, evidence_table, contradictions)
 
-    def _render(self, topic, findings, sources, evidence_table) -> str:
+    def _render(self, topic, findings, sources, evidence_table, contradictions=None) -> str:
         by_id = {s.source_id: s for s in sources}
         lines: list[str] = []
         lines.append(f"# Research Report: {topic}")
@@ -51,6 +52,21 @@ class WriterAgent:
             claim = row["claim"].replace("|", "/")
             lines.append(f"| {claim} | {row['source_id']} | {row['credibility']:.2f} |")
         lines.append("")
+        if contradictions:
+            lines.append("## Conflicting Evidence")
+            lines.append(
+                f"The evidence graph flagged {len(contradictions)} pair(s) of findings "
+                "that pull in opposite directions on overlapping terms. Both sides are "
+                "reported here; neither is silently dropped."
+            )
+            for c in contradictions:
+                lines.append(
+                    f"- \"{c['claim_a']}\" [{c['source_a']}] conflicts with "
+                    f"\"{c['claim_b']}\" [{c['source_b']}] — shared terms: "
+                    f"{', '.join(c['shared_terms'])} "
+                    f"(source credibility {c['confidence_a']:.2f} vs {c['confidence_b']:.2f})."
+                )
+            lines.append("")
         lines.append("## Discussion")
         if findings:
             lines.append(
