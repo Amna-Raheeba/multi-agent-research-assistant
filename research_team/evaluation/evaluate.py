@@ -30,7 +30,11 @@ def evaluate_topic(topic: str, supervisor: Supervisor | None = None) -> dict:
     state = sup.run(topic, save=False)
     draft = state.draft
     sections = [s for s in REQUIRED_SECTIONS if f"## {s}" in draft]
-    cited = len(re.findall(r"^- .+ \[[A-Z]+\d+", draft, flags=re.M))
+    # Count cited bullets in Key Findings only: the Conflicting Evidence
+    # section also quotes cited claims, and counting those pushed this
+    # ratio above 1.0 — a coverage figure over 100% is a bug, not a result.
+    kf = draft.split("## Key Findings", 1)[-1].split("\n## ", 1)[0]
+    cited = len(re.findall(r"^- .+ \[[A-Z]+\d+", kf, flags=re.M))
     total = len(state.findings)
     return {
         "topic": topic,
