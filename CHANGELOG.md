@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0] — 2026-11-10 — Streamlit dashboard
+
+### Added
+- `dashboard/` — a Streamlit app in the style of the PHM-FYP dashboard folder. It runs the real supervisor pipeline from the page (fixture topic selector plus a free-text topic, with the offline-corpus limits stated on screen) and renders the report with its Conflicting Evidence section, the evidence table, the evidence graph (matplotlib figure from the run's graph data, node/edge counts, and the same graph as a claim → source table), flagged contradictions with both sources' credibility, the per-agent BudgetTracker breakdown, and the run trace.
+- `dashboard/helpers.py` — the dashboard's data-shaping logic as pure Python with no streamlit import, covered by `tests/test_dashboard_helpers.py` (7 tests: graph loading/counts, claim→source rows, budget rows/totals, contradiction credibility resolution, evidence/trace formatting, graph figure).
+- Streamlit and matplotlib are dashboard-only dependencies: they are not in `requirements.txt` and the core package stays standard-library only.
+
 ## [0.2.0] — 2026-11-09
 
 ### Added
