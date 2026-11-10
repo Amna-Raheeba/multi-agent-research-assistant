@@ -23,3 +23,7 @@ include = ["research_team*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# CI invokes the plain `pytest` binary, which (unlike `python -m pytest`)
+# does not put the cwd on sys.path — declare it so `import research_team`
+# works the same locally and in Actions.
+pythonpath = ["."]
