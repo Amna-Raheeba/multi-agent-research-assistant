@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "multi-agent-research-assistant"
-version = "0.2.0"
+version = "0.3.0"
 description = "Supervisor-orchestrated multi-agent research assistant — offline-first, with budget, loop and critic guards"
 readme = "README.md"
 license = { text = "MIT" }
