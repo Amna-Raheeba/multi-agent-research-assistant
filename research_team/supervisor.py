@@ -13,6 +13,7 @@ from .agents.critic import CriticAgent
 from .agents.researcher import ResearcherAgent
 from .agents.writer import WriterAgent
 from .config import Settings, estimate_cost, estimate_tokens
+from .evidence_graph import analyse_evidence
 from .memory import RunMemory
 from .observability import Tracer
 from .state import ResearchState
@@ -126,10 +127,21 @@ class Supervisor:
             findings, evidence = self.analyst.run(state.sources)
             self.budget.record("analyst", " ".join(x.summary for x in state.sources), " ".join(f.claim for f in findings))
             state.findings, state.evidence_table = findings, evidence
+            # Build the evidence graph here, while claims and sources
+            # are both in hand: the writer needs the contradiction
+            # flags for its Conflicting Evidence section, and the
+            # critic needs them for its critique.
+            state.evidence_graph, state.contradictions = analyse_evidence(
+                evidence, findings, state.sources)
             state.phase = "analysis"
             self.tracer.log("analyst", "extract", f"{len(findings)} findings")
+            self.tracer.log("analyst", "evidence_graph",
+                            f"{len(state.evidence_graph['nodes'])} nodes, "
+                            f"{len(state.evidence_graph['edges'])} edges, "
+                            f"{len(state.contradictions)} contradiction(s)")
         elif nxt == "writer":
-            draft = self.writer.run(state.topic, state.findings, state.sources, state.evidence_table)
+            draft = self.writer.run(state.topic, state.findings, state.sources,
+                                    state.evidence_table, state.contradictions)
             self.budget.record("writer", " ".join(f.claim for f in state.findings), draft)
             state.draft = draft
             state.phase = "writing"
@@ -137,13 +149,15 @@ class Supervisor:
         elif nxt == "writer_revision":
             state.revision_count += 1
             unsupported = state.critique.unsupported_claims if state.critique else []
-            draft = self.writer.revise(state.topic, state.findings, state.sources, state.evidence_table, unsupported)
+            draft = self.writer.revise(state.topic, state.findings, state.sources,
+                                       state.evidence_table, unsupported,
+                                       state.contradictions)
             self.budget.record("writer", "revision", draft)
             state.draft = draft
             state.phase = "revision"
             self.tracer.log("writer", "revision", f"revision {state.revision_count}", unsupported=len(unsupported))
         elif nxt == "critic":
-            critique = self.critic.run(state.draft, state.findings)
+            critique = self.critic.run(state.draft, state.findings, state.contradictions)
             self.budget.record("critic", state.draft, " ".join(critique.comments))
             state.critique = critique
             state.phase = "critique"
