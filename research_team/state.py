@@ -44,6 +44,10 @@ class Critique:
     unsupported_claims: list[str] = field(default_factory=list)
     missing_citations: int = 0
     comments: list[str] = field(default_factory=list)
+    # Conflicting-evidence pairs flagged by the evidence graph. These are
+    # warnings, not errors: two sources disagreeing is a fact to report,
+    # so they never block approval on their own.
+    contradictions: list[dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass
@@ -53,6 +57,8 @@ class ResearchState:
     sources: list[Source] = field(default_factory=list)
     findings: list[Finding] = field(default_factory=list)
     evidence_table: list[dict[str, Any]] = field(default_factory=list)
+    evidence_graph: dict[str, Any] = field(default_factory=dict)  # nodes/edges, see evidence_graph.py
+    contradictions: list[dict[str, Any]] = field(default_factory=list)
     draft: str = ""
     critique: Critique | None = None
     revision_count: int = 0
