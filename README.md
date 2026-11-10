@@ -57,8 +57,9 @@ python -m research_team "explainable AI in healthcare"
 python -m research_team "LLM agents and multi-agent systems" --show-budget --show-trace
 python -m research_team "explainable predictive maintenance" -o report.md
 
-pip install pytest && pytest -q                  # 17 tests
+pip install pytest && pytest -q                  # 24 tests
 python -m research_team.evaluation.evaluate      # fixture evaluation
+pip install streamlit && streamlit run dashboard/app.py   # live dashboard (see dashboard/README.md)
 ```
 
 A full generated report is in [`examples/sample_report.md`](examples/sample_report.md) — 6 sources, 18 findings, 1 flagged contradiction, critic-approved, estimated run cost ≈ $0.0015. Its evidence graph is in [`examples/evidence_graph.json`](examples/evidence_graph.json) (24 nodes, 18 edges). Runs are checkpointed as JSON under `.runs/` and can be reloaded for inspection.
@@ -74,6 +75,7 @@ research_team/
 ├── agents/              # researcher · analyst · writer · critic
 ├── tools/               # fixture search (+ optional DuckDuckGo) · arXiv API
 └── evaluation/          # completeness / citation / evidence coverage
+dashboard/               # Streamlit app: live run, report, evidence graph, budget (dashboard/README.md)
 data/fixtures.json       # 13 original source summaries across 3 topics
 notebooks/               # 01 fixture-search debug · 02 contradiction scan
 docs/experiment_log.md   # dated working notes, failures included
