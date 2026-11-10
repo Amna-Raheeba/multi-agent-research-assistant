@@ -1,0 +1,306 @@
+{
+  "nodes": [
+    {
+      "id": "F1",
+      "type": "claim",
+      "claim": "Saliency maps alone did not measurably increase clinician trust",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "S1",
+      "type": "source",
+      "title": "Clinician trust in post-hoc explanations for medical imaging models",
+      "credibility": 0.84,
+      "source_type": "journal",
+      "year": 2024
+    },
+    {
+      "id": "F2",
+      "type": "claim",
+      "claim": "Pairing explanations with confidence and uncertainty improved appropriate reliance",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "F3",
+      "type": "claim",
+      "claim": "Clinicians valued guidance on when to override the model",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "id": "F4",
+      "type": "claim",
+      "claim": "Saliency maps alone measurably increased clinician trust",
+      "source_ids": [
+        "S13"
+      ]
+    },
+    {
+      "id": "S13",
+      "type": "source",
+      "title": "When saliency maps are enough: trust responses in a single-site chest imaging study",
+      "credibility": 0.8,
+      "source_type": "conference",
+      "year": 2025
+    },
+    {
+      "id": "F5",
+      "type": "claim",
+      "claim": "Trust gains appeared in both junior and senior clinicians in the sample",
+      "source_ids": [
+        "S13"
+      ]
+    },
+    {
+      "id": "F6",
+      "type": "claim",
+      "claim": "Trust was self-reported in a single-site sample, and live behaviour was not observed",
+      "source_ids": [
+        "S13"
+      ]
+    },
+    {
+      "id": "F7",
+      "type": "claim",
+      "claim": "Popular attribution methods often disagree on the same prediction",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "S2",
+      "type": "source",
+      "title": "Evaluating explanation fidelity in healthcare risk prediction",
+      "credibility": 0.71,
+      "source_type": "conference",
+      "year": 2023
+    },
+    {
+      "id": "F8",
+      "type": "claim",
+      "claim": "Fidelity testing should accompany accuracy reporting before deployment",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "F9",
+      "type": "claim",
+      "claim": "Disagreement between methods is itself a useful warning signal",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "id": "F10",
+      "type": "claim",
+      "claim": "High-risk clinical AI requires documented explanation methods",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "id": "S4",
+      "type": "source",
+      "title": "Regulatory expectations for explainable AI in clinical software",
+      "credibility": 0.65,
+      "source_type": "report",
+      "year": 2025
+    },
+    {
+      "id": "F11",
+      "type": "claim",
+      "claim": "Logging of outputs and human oversight are expected controls",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "id": "F12",
+      "type": "claim",
+      "claim": "Explanation quality is becoming a regulatory, not only technical, concern",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "id": "F13",
+      "type": "claim",
+      "claim": "Counterfactual explanations were rated more actionable than feature rankings",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "S3",
+      "type": "source",
+      "title": "Counterfactual explanations for treatment decision support",
+      "credibility": 0.54,
+      "source_type": "preprint",
+      "year": 2024
+    },
+    {
+      "id": "F14",
+      "type": "claim",
+      "claim": "Modifiable factors matter more to clinicians than static risk factors",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "F15",
+      "type": "claim",
+      "claim": "Prospective clinical validation is still missing",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "id": "F16",
+      "type": "claim",
+      "claim": "Long generic explanations contributed to alert fatigue",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "id": "S5",
+      "type": "source",
+      "title": "Why our hospital turned off its sepsis alert explanations",
+      "credibility": 0.13,
+      "source_type": "blog",
+      "year": 2022
+    },
+    {
+      "id": "F17",
+      "type": "claim",
+      "claim": "Explanations shown for every alert were eventually ignored",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "id": "F18",
+      "type": "claim",
+      "claim": "Brevity and selectivity matter for explanation design",
+      "source_ids": [
+        "S5"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "S1",
+      "to": "F1",
+      "relation": "supports",
+      "weight": 0.84
+    },
+    {
+      "from": "S1",
+      "to": "F2",
+      "relation": "supports",
+      "weight": 0.84
+    },
+    {
+      "from": "S1",
+      "to": "F3",
+      "relation": "supports",
+      "weight": 0.84
+    },
+    {
+      "from": "S13",
+      "to": "F4",
+      "relation": "supports",
+      "weight": 0.8
+    },
+    {
+      "from": "S13",
+      "to": "F5",
+      "relation": "supports",
+      "weight": 0.8
+    },
+    {
+      "from": "S13",
+      "to": "F6",
+      "relation": "supports",
+      "weight": 0.8
+    },
+    {
+      "from": "S2",
+      "to": "F7",
+      "relation": "supports",
+      "weight": 0.71
+    },
+    {
+      "from": "S2",
+      "to": "F8",
+      "relation": "supports",
+      "weight": 0.71
+    },
+    {
+      "from": "S2",
+      "to": "F9",
+      "relation": "supports",
+      "weight": 0.71
+    },
+    {
+      "from": "S4",
+      "to": "F10",
+      "relation": "supports",
+      "weight": 0.65
+    },
+    {
+      "from": "S4",
+      "to": "F11",
+      "relation": "supports",
+      "weight": 0.65
+    },
+    {
+      "from": "S4",
+      "to": "F12",
+      "relation": "supports",
+      "weight": 0.65
+    },
+    {
+      "from": "S3",
+      "to": "F13",
+      "relation": "supports",
+      "weight": 0.54
+    },
+    {
+      "from": "S3",
+      "to": "F14",
+      "relation": "supports",
+      "weight": 0.54
+    },
+    {
+      "from": "S3",
+      "to": "F15",
+      "relation": "supports",
+      "weight": 0.54
+    },
+    {
+      "from": "S5",
+      "to": "F16",
+      "relation": "supports",
+      "weight": 0.13
+    },
+    {
+      "from": "S5",
+      "to": "F17",
+      "relation": "supports",
+      "weight": 0.13
+    },
+    {
+      "from": "S5",
+      "to": "F18",
+      "relation": "supports",
+      "weight": 0.13
+    }
+  ]
+}
